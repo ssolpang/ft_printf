@@ -6,7 +6,7 @@
 /*   By: jkwak <jkwak@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 16:11:18 by jkwak             #+#    #+#             */
-/*   Updated: 2022/03/25 23:02:11 by jkwak            ###   ########.fr       */
+/*   Updated: 2022/03/27 15:08:24 by jkwak            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,12 @@ int	ft_printf(const char *format, ...);
 
 //utils
 size_t	ft_strlen(const char *s);
+void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 char	*ft_itoa(int n);
 char	*ft_strdup(const char *s1);
+void	ft_bzero(void *s, size_t n);
+void    *ft_calloc(size_t count, size_t size);
+char	*ft_itoa_hexa_base(int n);
 
 #endif

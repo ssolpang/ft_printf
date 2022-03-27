@@ -6,7 +6,7 @@
 /*   By: jkwak <jkwak@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 22:57:35 by jkwak             #+#    #+#             */
-/*   Updated: 2022/03/25 22:59:22 by jkwak            ###   ########.fr       */
+/*   Updated: 2022/03/27 15:26:28 by jkwak            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,11 @@ size_t	ft_strlen(const char *s)
 	while (s[i])
 		i++;
 	return (i);
+}
+
+void	ft_putchar_fd(char c, int fd)
+{
+	write(fd, &c, 1);
 }
 
 void	ft_putstr_fd(char *s, int fd)
@@ -100,4 +105,54 @@ char	*ft_itoa(int n)
 	if (sign < 0)
 		*(nbr + 0) = '-';
 	return (nbr);
+}
+
+void	ft_bzero(void *s, size_t n)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < n)
+	{
+		*((unsigned char *)s + i) = 0;
+		i++;
+	}
+}
+
+void	*ft_calloc(size_t count, size_t size)
+{
+	void	*mem;
+	size_t	total;
+
+	total = count * size;
+	mem = malloc(total);
+	if (mem == 0)
+		return (NULL);
+	ft_bzero(mem, total);
+	return (mem);
+}
+
+#include <stdio.h>
+
+char	*ft_itoa_hexa_base(int n)
+{
+	int		i;
+	int		temp;
+	char	*base;
+	char	*adr;
+
+	base = "0123456789ABCDEF";
+	adr = (char *)ft_calloc(17, sizeof(char));
+	if (!adr)
+		return (NULL);
+	adr[16] = 0;
+	i = 16;
+	while (n != 0)
+	{
+		temp = n % 16;
+		adr[i] = base[temp];
+		n = n / 16;
+		i--;
+	}
+	return (adr + i + 1);
 }
