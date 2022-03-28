@@ -6,7 +6,7 @@
 /*   By: jkwak <jkwak@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 22:57:35 by jkwak             #+#    #+#             */
-/*   Updated: 2022/03/27 15:26:28 by jkwak            ###   ########.fr       */
+/*   Updated: 2022/03/28 17:45:07 by jkwak            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,27 @@ char	*ft_itoa(int n)
 	return (nbr);
 }
 
+char	*ft_itoa_unsigned(unsigned int n)
+{
+	char			*nbr;
+	int				len;
+
+	if (n == 0)
+		return (ft_strdup("0"));
+	len = nbr_len(n);
+	nbr = (char *)malloc(sizeof(char) * (len + 1));
+	if (!nbr)
+		return (NULL);
+	*(nbr + len--) = 0;
+	while (len >= 0)
+	{
+		*(nbr + len) = (n % 10) + '0';
+		n = n / 10;
+		len--;
+	}
+	return (nbr);
+}
+
 void	ft_bzero(void *s, size_t n)
 {
 	size_t	i;
@@ -134,18 +155,22 @@ void	*ft_calloc(size_t count, size_t size)
 
 #include <stdio.h>
 
-char	*ft_itoa_hexa_base(int n)
+char	*ft_itoa_hexa_base(size_t n, int c)
 {
 	int		i;
-	int		temp;
+	size_t	temp;
 	char	*base;
 	char	*adr;
 
-	base = "0123456789ABCDEF";
+	if (n == 0)
+		return ("0");
+	if (c == 1)
+		base = "0123456789abcdef";
+	else if (c == 2)
+		base = "0123456789ABCDEF";
 	adr = (char *)ft_calloc(17, sizeof(char));
 	if (!adr)
 		return (NULL);
-	adr[16] = 0;
 	i = 16;
 	while (n != 0)
 	{
