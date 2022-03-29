@@ -6,7 +6,7 @@
 /*   By: jkwak <jkwak@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 16:11:18 by jkwak             #+#    #+#             */
-/*   Updated: 2022/03/28 21:33:13 by jkwak            ###   ########.fr       */
+/*   Updated: 2022/03/29 16:09:07 by jkwak            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,12 @@
 int	ft_printf(const char *format, ...);
 
 //format functions
-va_list	ft_char_format(va_list ap);
-va_list	ft_string_format(va_list ap);
+void	ft_char_format(va_list ap);
+void	ft_string_format(va_list ap);
+void	ft_decimal_integer_format(va_list ap);
+void	ft_unsigned_int_format(va_list ap);
+void	ft_pointer_format(va_list ap);
+void	ft_hexa_format(va_list ap, char c);
 
 //utils
 size_t	ft_strlen(const char *s);
