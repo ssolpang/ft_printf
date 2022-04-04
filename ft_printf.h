@@ -6,7 +6,7 @@
 /*   By: jkwak <jkwak@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 16:11:18 by jkwak             #+#    #+#             */
-/*   Updated: 2022/03/31 21:15:20 by jkwak            ###   ########.fr       */
+/*   Updated: 2022/04/05 00:59:36 by jkwak            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	ft_pointer_format(va_list ap);
 void	ft_hexa_format(va_list ap, char c);
 
 /*utils*/
+int		nbr_len_unsigned(unsigned int n);
 char	*ft_itoa_unsigned(unsigned int n);
 char	*ft_itoa_hexa_base(size_t n, int c);
 

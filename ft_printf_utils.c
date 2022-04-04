@@ -6,11 +6,24 @@
 /*   By: jkwak <jkwak@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 22:57:35 by jkwak             #+#    #+#             */
-/*   Updated: 2022/03/31 20:48:48 by jkwak            ###   ########.fr       */
+/*   Updated: 2022/04/05 00:59:48 by jkwak            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+int	nbr_len_unsigned(unsigned int n)
+{
+	int	len;
+
+	len = 0;
+	while (n)
+	{
+		n = n / 10;
+		len++;
+	}
+	return (len);
+}
 
 char	*ft_itoa_unsigned(unsigned int n)
 {
@@ -19,7 +32,7 @@ char	*ft_itoa_unsigned(unsigned int n)
 
 	if (n == 0)
 		return (ft_strdup("0"));
-	len = nbr_len(n);
+	len = nbr_len_unsigned(n);
 	nbr = (char *)malloc(sizeof(char) * (len + 1));
 	if (!nbr)
 		return (NULL);
