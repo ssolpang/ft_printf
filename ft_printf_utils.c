@@ -6,7 +6,7 @@
 /*   By: jkwak <jkwak@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 22:57:35 by jkwak             #+#    #+#             */
-/*   Updated: 2022/04/05 18:54:31 by jkwak            ###   ########.fr       */
+/*   Updated: 2022/04/05 21:32:41 by jkwak            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,49 +46,41 @@ char	*ft_itoa_unsigned(unsigned int n)
 	return (nbr);
 }
 
-char	*cut_front_zero(char *adr, int i)
+int	ft_count_digit(unsigned long long n)
 {
-	char	*s;
-	int		temp;
+	int	i;
 
-	s = (char *)malloc(sizeof(char) * (16 - i));
-	if (!s)
-		return (NULL);
-	temp = 0;
-	while (i < 16)
+	i = 0;
+	while (n != 0)
 	{
-		s[temp] = adr[i + 1];
-		temp++;
+		n = n / 16;
 		i++;
 	}
-	free(adr);
-	return (s);
+	return (i);
 }
 
-char	*ft_itoa_hexa_base(size_t n, int c)
+char	*ft_itoa_hexa_base(unsigned long long n, int c)
 {
-	int		i;
-	size_t	temp;
+	int		digit;
+	unsigned long long	temp;
 	char	*base;
 	char	*adr;
 
-	if (n == 0)
-		return ("0");
 	if (c == 1)
 		base = "0123456789abcdef";
 	else if (c == 2)
 		base = "0123456789ABCDEF";
-	adr = (char *)ft_calloc(17, sizeof(char));
+	digit = ft_count_digit(n);
+	adr = (char *)ft_calloc(digit + 1, sizeof(char));
 	if (!adr)
 		return (NULL);
-	i = 16;
+	digit -= 1;
 	while (n != 0)
 	{
 		temp = n % 16;
-		adr[i] = base[temp];
+		adr[digit] = base[temp];
 		n = n / 16;
-		(i)--;
+		digit--;
 	}
-	adr = cut_front_zero(adr, i);
 	return (adr);
 }

@@ -6,7 +6,7 @@
 /*   By: jkwak <jkwak@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 21:32:48 by jkwak             #+#    #+#             */
-/*   Updated: 2022/04/05 16:13:56 by jkwak            ###   ########.fr       */
+/*   Updated: 2022/04/05 21:33:13 by jkwak            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ int	ft_decimal_integer_format(va_list ap, int count)
 	s = ft_itoa(n);
 	count += ft_strlen(s);
 	ft_putstr_fd(s, 1);
-	free(s);
+	if (s)
+		free(s);
 	return (count);
 }
 
@@ -34,6 +35,7 @@ int	ft_unsigned_int_format(va_list ap, int count)
 	s = ft_itoa_unsigned(n);
 	count += ft_strlen(s);
 	ft_putstr_fd(s, 1);
-	free(s);
+	if (s)
+		free(s);
 	return (count);
 }
