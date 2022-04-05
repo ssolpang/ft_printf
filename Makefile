@@ -6,7 +6,7 @@
 #    By: jkwak <jkwak@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/24 16:16:21 by jkwak             #+#    #+#              #
-#    Updated: 2022/04/05 01:52:04 by jkwak            ###   ########.fr        #
+#    Updated: 2022/04/05 19:01:46 by jkwak            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,7 @@ clean :
 		make clean -C $(LIBFT_DIR)
 
 fclean : clean
-			$(RM) $(NAME)
+			$(RM) $(NAME) $(LIBFT)
 			make fclean -C $(LIBFT_DIR)
 
 re : fclean $(NAME)

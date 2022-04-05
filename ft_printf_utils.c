@@ -6,7 +6,7 @@
 /*   By: jkwak <jkwak@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 22:57:35 by jkwak             #+#    #+#             */
-/*   Updated: 2022/04/05 00:59:48 by jkwak            ###   ########.fr       */
+/*   Updated: 2022/04/05 18:54:31 by jkwak            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,25 @@ char	*ft_itoa_unsigned(unsigned int n)
 	return (nbr);
 }
 
+char	*cut_front_zero(char *adr, int i)
+{
+	char	*s;
+	int		temp;
+
+	s = (char *)malloc(sizeof(char) * (16 - i));
+	if (!s)
+		return (NULL);
+	temp = 0;
+	while (i < 16)
+	{
+		s[temp] = adr[i + 1];
+		temp++;
+		i++;
+	}
+	free(adr);
+	return (s);
+}
+
 char	*ft_itoa_hexa_base(size_t n, int c)
 {
 	int		i;
@@ -68,7 +87,8 @@ char	*ft_itoa_hexa_base(size_t n, int c)
 		temp = n % 16;
 		adr[i] = base[temp];
 		n = n / 16;
-		i--;
+		(i)--;
 	}
-	return (adr + i + 1);
+	adr = cut_front_zero(adr, i);
+	return (adr);
 }
