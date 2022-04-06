@@ -6,7 +6,7 @@
 /*   By: jkwak <jkwak@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 16:10:26 by jkwak             #+#    #+#             */
-/*   Updated: 2022/04/06 15:57:11 by jkwak            ###   ########.fr       */
+/*   Updated: 2022/04/06 17:41:18 by jkwak            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	ft_check_flag(const char *format)
 	int	temp;
 
 	temp = 0;
-	while (format[temp] && ft_strchr("-*.# +0123456789", format[temp]))
+	while (format[temp] && ft_strchr("-.# +0123456789", format[temp]))
 		temp++;
 	return (temp);
 }
