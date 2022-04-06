@@ -6,7 +6,7 @@
 /*   By: jkwak <jkwak@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 16:11:18 by jkwak             #+#    #+#             */
-/*   Updated: 2022/04/05 21:54:19 by jkwak            ###   ########.fr       */
+/*   Updated: 2022/04/06 15:57:09 by jkwak            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,18 @@
 # include "libft/libft.h"
 
 /*main functions*/
-int	ft_check_format_and_print(va_list ap, char format, int count);
-int ft_just_print(char c, int count);
-int	ft_printf(const char *format, ...);
+int		ft_check_format_and_print(va_list ap, char format, int count);
+int		ft_check_flag(const char *format);
+int		ft_just_print(char c, int count);
+int		ft_printf(const char *format, ...);
 
 /*check format and print functions*/
-int	ft_char_format(va_list ap, int count);
-int	ft_string_format(va_list ap, int count);
-int	ft_decimal_integer_format(va_list ap, int count);
-int	ft_unsigned_int_format(va_list ap, int count);
-int	ft_pointer_format(va_list ap, int count);
-int	ft_hexa_format(va_list ap, char c, int count);
+int		ft_char_format(va_list ap, int count);
+int		ft_string_format(va_list ap, int count);
+int		ft_decimal_integer_format(va_list ap, int count);
+int		ft_unsigned_int_format(va_list ap, int count);
+int		ft_pointer_format(va_list ap, int count);
+int		ft_hexa_format(va_list ap, char c, int count);
 
 /*utils*/
 int		nbr_len_unsigned(unsigned int n);

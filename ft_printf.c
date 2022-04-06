@@ -6,7 +6,7 @@
 /*   By: jkwak <jkwak@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 16:10:26 by jkwak             #+#    #+#             */
-/*   Updated: 2022/04/05 22:17:13 by jkwak            ###   ########.fr       */
+/*   Updated: 2022/04/06 15:57:11 by jkwak            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,15 @@ int	ft_check_format_and_print(va_list ap, char format, int count)
 	return (count);
 }
 
-//int	ft_check_format(char *format, int i)
-//{
-//}
+int	ft_check_flag(const char *format)
+{
+	int	temp;
+
+	temp = 0;
+	while (format[temp] && ft_strchr("-*.# +0123456789", format[temp]))
+		temp++;
+	return (temp);
+}
 
 int	ft_just_print(char c, int count)
 {
@@ -52,7 +58,7 @@ int	ft_printf(const char *format, ...)
 	int		i;
 	int		count;
 	va_list	ap;
-	
+
 	i = 0;
 	count = 0;
 	va_start(ap, format);
@@ -60,18 +66,13 @@ int	ft_printf(const char *format, ...)
 	{
 		if (format[i] == '%')
 		{
-			while (format[i + 1] && !ft_strchr("cspdiuxX%%", format[i + 1]))
-				i++;
-			if (!format[i + 1])
-				break ;
-			count = ft_check_format_and_print(ap, format[i + 1], count);
-			i += 2;
+			i = (i + 1) + ft_check_flag(&format[i + 1]);
+			count = ft_check_format_and_print(ap, format[i], count);
+			if (ft_strchr("csdipuxX%", format[i]))
+				i += 1;
 		}
 		if (format[i] && (format[i] != '%'))
-		{
-			count = ft_just_print(format[i], count);
-			i++;
-		}
+			count = ft_just_print(format[i++], count);
 	}
 	va_end(ap);
 	return (count);

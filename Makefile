@@ -6,7 +6,7 @@
 #    By: jkwak <jkwak@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/24 16:16:21 by jkwak             #+#    #+#              #
-#    Updated: 2022/04/05 19:01:46 by jkwak            ###   ########.fr        #
+#    Updated: 2022/04/06 15:52:37 by jkwak            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,21 +31,18 @@ RM = rm -rf
 
 all : $(NAME)
 
-$(NAME) : $(OBJS) $(LIBFT)
-			$(AR) $(ARFLAGS) $(NAME) $(OBJS)
-
-$(LIBFT) : $(LIBFT_DIR)
-			 cd $(LIBFT_DIR) ; $(MAKE)
-			cp $(LIBFT_DIR)/$(LIBFT) $(NAME)
-			$(AR) $(ARFLAGS) $(NAME) $(OBJS)
+$(NAME) : $(OBJS)
+	make -C $(LIBFT_DIR)
+	cp $(LIBFT_DIR)/$(LIBFT) $(NAME)
+	$(AR) $(ARFLAGS) $(NAME) $(OBJS)
 
 clean :
-		$(RM) $(OBJS)
-		make clean -C $(LIBFT_DIR)
+	$(RM) $(OBJS)
+	make clean -C $(LIBFT_DIR)
 
 fclean : clean
-			$(RM) $(NAME) $(LIBFT)
-			make fclean -C $(LIBFT_DIR)
+	$(RM) $(NAME) $(LIBFT)
+	make fclean -C $(LIBFT_DIR)
 
 re : fclean $(NAME)
 

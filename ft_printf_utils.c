@@ -6,7 +6,7 @@
 /*   By: jkwak <jkwak@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 22:57:35 by jkwak             #+#    #+#             */
-/*   Updated: 2022/04/05 21:32:41 by jkwak            ###   ########.fr       */
+/*   Updated: 2022/04/06 15:45:07 by jkwak            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,10 @@ int	ft_count_digit(unsigned long long n)
 
 char	*ft_itoa_hexa_base(unsigned long long n, int c)
 {
-	int		digit;
+	int					digit;
 	unsigned long long	temp;
-	char	*base;
-	char	*adr;
+	char				*base;
+	char				*adr;
 
 	if (c == 1)
 		base = "0123456789abcdef";
